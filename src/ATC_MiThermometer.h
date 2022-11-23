@@ -59,7 +59,7 @@
     #define DEBUG_PRINT(...) { DEBUG_PORT.print(__VA_ARGS__); }
     #define DEBUG_PRINTLN(...) { DEBUG_PORT.println(__VA_ARGS__); }
 #else
-    #define DEBUG_PRINT(...) {}
+    #define DEBUG_PRINTF(...) {}
     #define DEBUG_PRINT(...) {}
     #define DEBUG_PRINTLN(...) {}
 #endif
