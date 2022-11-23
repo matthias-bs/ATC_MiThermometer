@@ -1,5 +1,6 @@
 # ATC_MiThermometer
 
+[![CI](https://github.com/matthias-bs/ATC_MiThermometer/actions/workflows/CI.yml/badge.svg)](https://github.com/matthias-bs/ATC_MiThermometer/actions/workflows/CI.yml)
 [![GitHub release](https://img.shields.io/github/release/matthias-bs/ATC_MiThermometer?maxAge=3600)](https://github.com/matthias-bs/ATC_MiThermometer/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/matthias-bs/ATC_MiThermometer/blob/main/LICENSE)
 
