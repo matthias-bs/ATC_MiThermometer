@@ -1,0 +1,27 @@
+############################################
+# Syntax Coloring Map For ATC_MiThermometer
+############################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ATC_MiThermometer	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin                       KEYWORD2
+clearScanResults     	    KEYWORD2
+getData                     KEYWORD2
+resetData                   KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+NO_OF_SENSORS               LITERAL1
+Footer
