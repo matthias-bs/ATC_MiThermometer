@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['data_16',['data',['../class_a_t_c___mi_thermometer.html#a511a8627643f52c335f22ffc4fc91b89',1,'ATC_MiThermometer']]]
+  ['batt_5flevel_22',['batt_level',['../struct_mi_th_data___s.html#a1d77512ebbde9e8138702027869a1dbe',1,'MiThData_S']]],
+  ['batt_5fvoltage_23',['batt_voltage',['../struct_mi_th_data___s.html#ade3171e8150fd05327418c9f375b41b4',1,'MiThData_S']]]
 ];
