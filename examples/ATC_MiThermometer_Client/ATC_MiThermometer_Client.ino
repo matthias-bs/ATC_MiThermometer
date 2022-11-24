@@ -54,12 +54,20 @@ std::vector<std::string> knownBLEAddresses = {"a4:c1:38:b8:1f:7f", "a4:c1:38:bf:
 
 ATC_MiThermometer miThermometer(knownBLEAddresses);
 
+// Iteration counter
+int iteration = 0;
 
 void setup() {
     Serial.begin(115200);
     
+    // Print free heap before initialization
+    Serial.println("Starting:    Free heap is " + String(ESP.getFreeHeap()));
+    
     // Initialization
     miThermometer.begin();
+    
+    // Print free heap after initialization
+    Serial.println("Initialized: Free heap is " + String(ESP.getFreeHeap()));
 }
 
 void loop() {
@@ -81,11 +89,14 @@ void loop() {
             Serial.println();
          }
     }
-    Serial.print("Devices found: ");
-    Serial.println(found);
-    Serial.println();
+    Serial.println("BLE Devices found (total): " + String(found));
 
     // Delete results from BLEScan buffer to release memory
     miThermometer.clearScanResults();
+    
+    // Print iteration counter and free heap
+    Serial.println("Iteration " + String(iteration++) + " - Free heap is " + String(ESP.getFreeHeap()));
+    Serial.println("---");
+
     delay(5000);
 }
