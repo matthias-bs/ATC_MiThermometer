@@ -67,15 +67,15 @@
 
 // MiThermometer data struct / type
 struct MiThData_S {
-        bool        valid;          // !> data valid
-        int16_t     temperature;    // !> temperature x 100°C
-        uint16_t    humidity;       // !> humidity x 100%
-        uint16_t    batt_voltage;   // !> battery voltage [mv]
-        uint8_t     batt_level;     // !> battery level   [%]
-        int16_t     rssi;           // !> RSSI [dBm]
+        bool        valid;          //!< data valid
+        int16_t     temperature;    //!< temperature x 100°C
+        uint16_t    humidity;       //!< humidity x 100%
+        uint16_t    batt_voltage;   //!< battery voltage [mv]
+        uint8_t     batt_level;     //!< battery level   [%]
+        int16_t     rssi;           //!< RSSI [dBm]
 };
 
-typedef struct MiThData_S MiThData_t;
+typedef struct MiThData_S MiThData_t; //!< Shortcut for struct MiThData_S
 
 
 /*!
@@ -87,6 +87,8 @@ class ATC_MiThermometer {
     public:
         /*!
         \brief Constructor.
+        
+        \param known_sensors    Vector of BLE MAC addresses of known sensors, e.g. {"11:22:33:44:55:66", "AA:BB:CC:DD:EE:FF"}
         */
         ATC_MiThermometer(std::vector<std::string> known_sensors) {
             _known_sensors = known_sensors;
@@ -108,14 +110,12 @@ class ATC_MiThermometer {
         /*!
         \brief Get data from sensors by running a BLE scan.
         
-        \param duration Scan duration in seconds
+        \param duration     Scan duration in seconds
         */                
         unsigned getData(uint32_t duration);
         
         /*!
         \brief Set sensor data invalid.
-        
-        \param duration Scan duration in seconds
         */                        
         void resetData(void);
         
