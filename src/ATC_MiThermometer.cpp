@@ -55,7 +55,7 @@
  */
 class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
   void onResult(BLEAdvertisedDevice* advertisedDevice) {
-    DEBUG_PRINTF("Advertised Device: %s \n", advertisedDevice->toString().c_str());
+    log_d("Advertised Device: %s", advertisedDevice->toString().c_str());
     /*
      * Here we add the device scanned to the whitelist based on service data but any
      * advertised data can be used for your preffered data.
@@ -63,7 +63,7 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
     if (advertisedDevice->haveServiceData()) {
       /* If this is a device with data we want to capture, add it to the whitelist */
       if (advertisedDevice->getServiceData(NimBLEUUID("181A")) != "") {
-        DEBUG_PRINTF("Adding %s to whitelist\n", std::string(advertisedDevice->getAddress()).c_str());
+        log_d("Adding %s to whitelist", std::string(advertisedDevice->getAddress()).c_str());
         NimBLEDevice::whiteListAdd(advertisedDevice->getAddress());
       }
     }
@@ -88,47 +88,74 @@ void ATC_MiThermometer::begin(void)
 unsigned ATC_MiThermometer::getData(uint32_t duration) {
     BLEScanResults foundDevices = _pBLEScan->start(duration, false /* is_continue */);
   
-    DEBUG_PRINTLN("Whitelist contains:");
+    log_d("Whitelist contains:");
     for (auto i=0; i<NimBLEDevice::getWhiteListCount(); ++i) {
-        DEBUG_PRINTLN(NimBLEDevice::getWhiteListAddress(i).toString().c_str());
+        log_d("%s", NimBLEDevice::getWhiteListAddress(i).toString().c_str());
     }
   
-    DEBUG_PRINTLN("Assigning scan results...");
+    log_d("Assigning scan results...");
     for (unsigned i=0; i<foundDevices.getCount(); i++) {
         
         // Match all devices found against list of known sensors
         for (unsigned n = 0; n < _known_sensors.size(); n++) {
-            DEBUG_PRINT("Found: ");
-            DEBUG_PRINT(foundDevices.getDevice(i).getAddress().toString().c_str());
-            DEBUG_PRINT(" comparing to: ");
-            DEBUG_PRINT(BLEAddress(_known_sensors[n]).toString().c_str());
+            log_d("Found: %s  comparing to: %s", 
+                  foundDevices.getDevice(i).getAddress().toString().c_str(), 
+                  BLEAddress(_known_sensors[n]).toString().c_str());
             if (foundDevices.getDevice(i).getAddress() == BLEAddress(_known_sensors[n])) {
-                DEBUG_PRINT(" -> Match! Index: ");
-                DEBUG_PRINTLN(n);
+                log_d(" -> Match! Index: ");
                 data[n].valid = true;
-            
-                // Temperature
-                int temp_msb = foundDevices.getDevice(i).getServiceData().c_str()[7];
-                int temp_lsb = foundDevices.getDevice(i).getServiceData().c_str()[6];
-                data[n].temperature = (temp_msb << 8) | temp_lsb;
+                
+                int len = foundDevices.getDevice(i).getServiceData().length();
+                log_d("Length of ServiceData: %d", len);
+                
+                if (len == 15) {
+                    log_d("Custom format");
+                    // Temperature
+                    int temp_msb = foundDevices.getDevice(i).getServiceData().c_str()[7];
+                    int temp_lsb = foundDevices.getDevice(i).getServiceData().c_str()[6];
+                    data[n].temperature = (temp_msb << 8) | temp_lsb;
 
-                // Humidity
-                int hum_msb = foundDevices.getDevice(i).getServiceData().c_str()[9];
-                int hum_lsb = foundDevices.getDevice(i).getServiceData().c_str()[8];
-                data[n].humidity = (hum_msb << 8) | hum_lsb;
+                    // Humidity
+                    int hum_msb = foundDevices.getDevice(i).getServiceData().c_str()[9];
+                    int hum_lsb = foundDevices.getDevice(i).getServiceData().c_str()[8];
+                    data[n].humidity = (hum_msb << 8) | hum_lsb;
 
-                // Battery voltage
-                int volt_msb = foundDevices.getDevice(i).getServiceData().c_str()[11];
-                int volt_lsb = foundDevices.getDevice(i).getServiceData().c_str()[10];
-                data[n].batt_voltage = (volt_msb << 8) | volt_lsb;
+                    // Battery voltage
+                    int volt_msb = foundDevices.getDevice(i).getServiceData().c_str()[11];
+                    int volt_lsb = foundDevices.getDevice(i).getServiceData().c_str()[10];
+                    data[n].batt_voltage = (volt_msb << 8) | volt_lsb;
 
-                // Battery state [%]
-                data[n].batt_level = foundDevices.getDevice(i).getServiceData().c_str()[12];         
-            
+                    // Battery state [%]
+                    data[n].batt_level = foundDevices.getDevice(i).getServiceData().c_str()[12];         
+                }
+                else if (len == 13) {
+                    log_d("ATC1441 format");
+                    
+                    // Temperature
+                    int temp_lsb = foundDevices.getDevice(i).getServiceData().c_str()[7];
+                    int temp_msb = foundDevices.getDevice(i).getServiceData().c_str()[6];
+                    data[n].temperature  = (temp_msb << 8) | temp_lsb;
+                    data[n].temperature *= 10;
+
+                    // Humidity
+                    data[n].humidity  = foundDevices.getDevice(i).getServiceData().c_str()[8];
+                    data[n].humidity *= 100;
+
+                    // Battery voltage
+                    int volt_lsb = foundDevices.getDevice(i).getServiceData().c_str()[11];
+                    int volt_msb = foundDevices.getDevice(i).getServiceData().c_str()[10];
+                    data[n].batt_voltage = (volt_msb << 8) | volt_lsb;
+
+                    // Battery state [%]
+                    data[n].batt_level = foundDevices.getDevice(i).getServiceData().c_str()[9];
+                } else {
+                    log_d("Unknown ServiceData format");
+                }
+                
                 // Received Signal Strength Indicator [dBm]
                 data[n].rssi = foundDevices.getDevice(i).getRSSI();
             } else {
-                DEBUG_PRINTLN();
+                log_d();
             }
         }
     }
