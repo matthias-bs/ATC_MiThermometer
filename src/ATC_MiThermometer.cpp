@@ -39,6 +39,7 @@
 // History:
 //
 // 20221123 Created
+// 20221223 Added support for ATC1441 format
 //
 // ToDo: 
 // -
