@@ -61,3 +61,6 @@ void loop() {
 ```
 ## Source Code Documentation
 https://matthias-bs.github.io/ATC_MiThermometer/
+
+## Alternative
+You might want to have a look at [Theengs Decoder](https://decoder.theengs.io/). It is also built on NimBLE-Arduino, runs on ESP32, seems to decode both variants of the alternative LYWSD03MMC firmware and many devices more.
