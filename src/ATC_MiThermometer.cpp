@@ -102,7 +102,7 @@ unsigned ATC_MiThermometer::getData(uint32_t duration) {
                   foundDevices.getDevice(i).getAddress().toString().c_str(), 
                   BLEAddress(_known_sensors[n]).toString().c_str());
             if (foundDevices.getDevice(i).getAddress() == BLEAddress(_known_sensors[n])) {
-                log_d(" -> Match! Index: ");
+                log_d(" -> Match! Index: %d", n);
                 data[n].valid = true;
                 
                 int len = foundDevices.getDevice(i).getServiceData().length();
