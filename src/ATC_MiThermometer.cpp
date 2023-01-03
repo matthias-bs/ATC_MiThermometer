@@ -4,7 +4,7 @@
 // Bluetooth low energy thermometer/hygrometer sensor client for MCUs supported by NimBLE-Arduino.
 // For sensors running ATC_MiThermometer firmware (see https://github.com/pvvx/ATC_MiThermometer)
 //
-// https://github.com/matthias-bs/ESP32_ATC_MiThermometer_Library
+// https://github.com/matthias-bs/ATC_MiThermometer
 //
 // Based on:
 // ---------
