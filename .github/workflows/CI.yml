@@ -13,7 +13,8 @@ jobs:
     strategy:
       matrix:
         board:
-          - esp32:esp32:esp32
+          - esp32:esp32:esp32:DebugLevel=none
+          - esp32:esp32:esp32:DebugLevel=verbose
 
     runs-on: ubuntu-latest
     name: ${{ matrix.board }}
@@ -31,11 +32,11 @@ jobs:
 
       - name: Get platform name
         if: ${{ env.run-build == 'true' }}
-        uses: jungwinter/split@v1
+        uses: jungwinter/split@v2
         id: split
         with:
           msg: ${{ matrix.board }}
-          seperator: ':'
+          separator: ':'
 
       - name: Prepare platform-specific settings
         if: ${{ env.run-build == 'true' }}
@@ -43,15 +44,15 @@ jobs:
         run:
           |
           # common settings - no extra options, skip nothing, all warnings
-          echo "::set-output name=options::"
-          echo "::set-output name=skip-pattern::''"
-          echo "::set-output name=warnings::'all'"
+          echo "options=''" >> $GITHUB_OUTPUT
+          echo "skip-pattern=''" >> $GITHUB_OUTPUT
+          echo "warnings='all'" >> $GITHUB_OUTPUT
 
           # platform-dependent settings - extra board options, board index URLs, skip patterns etc.
           if [[ "${{ contains(matrix.board, 'esp32:esp32') }}" == "true" ]]; then
             # ESP32
             python -m pip install pyserial
-            echo "::set-output name=index-url::--additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
+            echo "index-url=--additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json" $GITHUB_OUTPUT
           fi
 
       - name: Install libraries
