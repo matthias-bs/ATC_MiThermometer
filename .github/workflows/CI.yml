@@ -52,7 +52,7 @@ jobs:
           if [[ "${{ contains(matrix.board, 'esp32:esp32') }}" == "true" ]]; then
             # ESP32
             python -m pip install pyserial
-            echo "index-url=--additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json" $GITHUB_OUTPUT
+            echo "index-url=--additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json" >> $GITHUB_OUTPUT
           fi
 
       - name: Install libraries
