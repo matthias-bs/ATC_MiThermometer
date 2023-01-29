@@ -9,6 +9,10 @@
 //#include <FreeRTOS/FreeRTOS.h>
 #include "ATC_MiThermometer.h"
 
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 13
+#endif
+
 // List of known sensors' BLE addresses
 std::vector<std::string> knownBLEAddresses = {"a4:c1:38:02:8B:E0", "a4:c1:38:64:8F:10", "a4:c1:38:F3:C1:B4"};
 ATC_MiThermometer miTh(knownBLEAddresses);
