@@ -15,6 +15,7 @@ jobs:
         board:
           - esp32:esp32:esp32:DebugLevel=none
           - esp32:esp32:esp32:DebugLevel=verbose
+          - esp32:esp32:d1_uno32
 
     runs-on: ubuntu-latest
     name: ${{ matrix.board }}
