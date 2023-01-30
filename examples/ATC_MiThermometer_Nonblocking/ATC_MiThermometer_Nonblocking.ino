@@ -6,7 +6,6 @@
 // Mijia lywsd03mmc thermometers are first to be loaded with a custom firmware as per:
 // https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html
 
-//#include <FreeRTOS/FreeRTOS.h>
 #include "ATC_MiThermometer.h"
 
 #ifndef LED_BUILTIN
