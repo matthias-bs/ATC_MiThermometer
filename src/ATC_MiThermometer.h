@@ -60,6 +60,7 @@ struct MiThData_S {
         uint16_t    batt_voltage;   //!< battery voltage [mv]
         uint8_t     batt_level;     //!< battery level   [%]
         int16_t     rssi;           //!< RSSI [dBm]
+        bool        switch_state;   //!< Switch status
 };
 
 typedef struct MiThData_S MiThData_t; //!< Shortcut for struct MiThData_S
