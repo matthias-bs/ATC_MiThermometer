@@ -127,7 +127,12 @@ unsigned ATC_MiThermometer::getData(uint32_t duration) {
                     data[n].batt_voltage = (volt_msb << 8) | volt_lsb;
 
                     // Battery state [%]
-                    data[n].batt_level = foundDevices.getDevice(i).getServiceData().c_str()[12];         
+                    data[n].batt_level = foundDevices.getDevice(i).getServiceData().c_str()[12];
+                  
+                    // switch state
+                    data[n].switch_state = foundDevices.getDevice(i).getServiceData().c_str()[13];
+
+                  
                 }
                 else if (len == 13) {
                     log_d("ATC1441 format");
