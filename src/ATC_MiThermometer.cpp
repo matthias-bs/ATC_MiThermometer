@@ -128,10 +128,17 @@ unsigned ATC_MiThermometer::getData(uint32_t duration) {
 
                     // Battery state [%]
                     data[n].batt_level = foundDevices.getDevice(i).getServiceData().c_str()[12];
-                  
-                    // switch state
-                    data[n].switch_state = foundDevices.getDevice(i).getServiceData().c_str()[13];
 
+                  	// Count
+					          data[n].count = foundDevices.getDevice(i).getServiceData().c_str()[13];    
+                  
+                    //Flags
+          					uint8_t flagsByte = foundDevices.getDevice(i).getServiceData().c_str()[14];
+          					data[n].reedSwitchState = flagsByte & 0x01; // Extract bit 0 (Reed Switch)
+          					data[n].gpioTrgOutput = (flagsByte >> 1) & 0x01; // Extract bit 1 (GPIO_TRG pin output)
+          					data[n].controlParameters = (flagsByte >> 2) & 0x01; // Extract bit 2 (Control parameters)
+          					data[n].tempTriggerEvent = (flagsByte >> 3) & 0x01; // Extract bit 3 (Temperature trigger event)
+          					data[n].humiTriggerEvent = (flagsByte >> 4) & 0x01; // Extract bit 4 (Humidity trigger event)
                   
                 }
                 else if (len == 13) {
