@@ -86,7 +86,6 @@ void loop() {
             Serial.printf("%.3fV\n",  miThermometer.data[i].batt_voltage/1000.0);
             Serial.printf("%d%%\n",   miThermometer.data[i].batt_level);
             Serial.printf("%ddBm\n",  miThermometer.data[i].rssi);
-            Serial.println(miThermometer.data[i].switch_state);
             Serial.printf("Measurement Count: %d\n", miThermometer.data[i].count);
             // Print boolean flags
             Serial.printf("Reed Switch State: %s\n", miThermometer.data[i].reedSwitchState ? "Open" : "Closed");
