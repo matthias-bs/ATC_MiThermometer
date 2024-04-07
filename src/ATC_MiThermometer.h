@@ -60,6 +60,13 @@ struct MiThData_S {
         uint16_t    batt_voltage;   //!< battery voltage [mv]
         uint8_t     batt_level;     //!< battery level   [%]
         int16_t     rssi;           //!< RSSI [dBm]
+        uint8_t     count;        	//!< measurement count
+        bool 	    reedSwitchState;
+        bool        gpioTrgOutput;
+        bool 	    controlParameters;
+        bool 	    tempTriggerEvent;
+        bool 	    humiTriggerEvent;
+
 };
 
 typedef struct MiThData_S MiThData_t; //!< Shortcut for struct MiThData_S
