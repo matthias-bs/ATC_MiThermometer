@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_24',['data',['../class_a_t_c___mi_thermometer.html#a511a8627643f52c335f22ffc4fc91b89',1,'ATC_MiThermometer']]]
+  ['count_25',['count',['../struct_mi_th_data___s.html#aa873604b2573c0b748db3aa07519f496',1,'MiThData_S']]]
 ];

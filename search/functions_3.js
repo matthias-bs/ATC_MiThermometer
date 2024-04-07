@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getdata_20',['getData',['../class_a_t_c___mi_thermometer.html#a9ea653d4d465310eb012ad2fc4a345a4',1,'ATC_MiThermometer']]]
+  ['getdata_21',['getData',['../class_a_t_c___mi_thermometer.html#a9ea653d4d465310eb012ad2fc4a345a4',1,'ATC_MiThermometer']]]
 ];
