@@ -13,7 +13,7 @@
 #endif
 
 // List of known sensors' BLE addresses
-std::vector<std::string> knownBLEAddresses = {"a4:c1:38:02:8B:E0", "a4:c1:38:64:8F:10", "a4:c1:38:F3:C1:B4"};
+std::vector<std::string> knownBLEAddresses = {"a4:c1:38:b8:1f:7f", "a4:c1:38:02:8B:E0", "a4:c1:38:64:8F:10", "a4:c1:38:F3:C1:B4"};
 ATC_MiThermometer miTh(knownBLEAddresses);
 
 MiThData_S miThData[3];
@@ -44,6 +44,7 @@ void loop() {
     if (miThDat.valid) {
       count++;
       Serial.printf("sensor #%d -> ", i);
+      Serial.printf("name: %s ; ",             miThDat.name.c_str());
       Serial.printf("temperature: %.2fC ; ",   miThDat.temperature *0.01f );
       Serial.printf("humidity: %.2f%% ; ",     miThDat.humidity    *0.01f );
       Serial.printf("voltage: %.3fV ; ",       miThDat.batt_voltage*0.001f);

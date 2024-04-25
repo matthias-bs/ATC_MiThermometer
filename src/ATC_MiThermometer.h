@@ -50,11 +50,13 @@
 
 #include <Arduino.h>
 #include <NimBLEDevice.h>
+#include <string>
 
 
 // MiThermometer data struct / type
 struct MiThData_S {
         bool        valid;          //!< data valid
+        std::string name;           //!< BT device name
         int16_t     temperature;    //!< temperature x 100°C
         uint16_t    humidity;       //!< humidity x 100%
         uint16_t    batt_voltage;   //!< battery voltage [mv]
