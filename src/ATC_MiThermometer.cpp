@@ -96,6 +96,8 @@ unsigned ATC_MiThermometer::getData(uint32_t duration) {
   
     log_d("Assigning scan results...");
     for (unsigned i=0; i<foundDevices.getCount(); i++) {
+        log_d("haveName(): %d", foundDevices.getDevice(i).haveName());
+        log_d("getName(): %s", foundDevices.getDevice(i).getName().c_str());
         
         // Match all devices found against list of known sensors
         for (unsigned n = 0; n < _known_sensors.size(); n++) {
@@ -109,6 +111,7 @@ unsigned ATC_MiThermometer::getData(uint32_t duration) {
                 int len = foundDevices.getDevice(i).getServiceData().length();
                 log_d("Length of ServiceData: %d", len);
                 
+                data[n].name = foundDevices.getDevice(i).getName();
                 if (len == 15) {
                     log_d("Custom format");
                     // Temperature
