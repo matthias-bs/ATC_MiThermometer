@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['resetdata_11',['resetData',['../class_a_t_c___mi_thermometer.html#a48f7a1a28d8e12a92209ad9ef47cac59',1,'ATC_MiThermometer']]],
-  ['rssi_12',['rssi',['../struct_mi_th_data___s.html#af08728f245d8cd50167712a46aa357f9',1,'MiThData_S']]]
+  ['name_11',['name',['../struct_mi_th_data___s.html#a2239dad3e469cf168fa0ccd368c0780f',1,'MiThData_S']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rssi_28',['rssi',['../struct_mi_th_data___s.html#af08728f245d8cd50167712a46aa357f9',1,'MiThData_S']]]
+  ['name_29',['name',['../struct_mi_th_data___s.html#a2239dad3e469cf168fa0ccd368c0780f',1,'MiThData_S']]]
 ];

@@ -7,6 +7,7 @@ var struct_mi_th_data___s =
     [ "gpioTrgOutput", "struct_mi_th_data___s.html#a86fc7c614f0cfb9eb157778a3635a1d8", null ],
     [ "humidity", "struct_mi_th_data___s.html#a8a65999ca03e8286e100b08779032c91", null ],
     [ "humiTriggerEvent", "struct_mi_th_data___s.html#a950ff0fa5b1d91ef47ed84adcf7199a0", null ],
+    [ "name", "struct_mi_th_data___s.html#a2239dad3e469cf168fa0ccd368c0780f", null ],
     [ "reedSwitchState", "struct_mi_th_data___s.html#ace4c96d21c7ef6ad1a92364b7c2e6ff8", null ],
     [ "rssi", "struct_mi_th_data___s.html#af08728f245d8cd50167712a46aa357f9", null ],
     [ "temperature", "struct_mi_th_data___s.html#ac8f32b25bcf0b97c17cd264a2323ff53", null ],
