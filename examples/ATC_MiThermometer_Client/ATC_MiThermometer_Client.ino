@@ -39,6 +39,9 @@
 // History:
 //
 // 20221123 Created
+// 20240403 Added reedSwitchState, gpioTrgOutput, controlParameters,
+//          tempTriggerEvent &humiTriggerEvent
+// 20240425 Added device name
 //
 // To Do: 
 // -
