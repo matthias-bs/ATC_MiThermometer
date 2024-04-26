@@ -3,7 +3,10 @@
 [![CI](https://github.com/matthias-bs/ATC_MiThermometer/actions/workflows/CI.yml/badge.svg)](https://github.com/matthias-bs/ATC_MiThermometer/actions/workflows/CI.yml)
 [![GitHub release](https://img.shields.io/github/release/matthias-bs/ATC_MiThermometer?maxAge=3600)](https://github.com/matthias-bs/ATC_MiThermometer/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/matthias-bs/ATC_MiThermometer/blob/main/LICENSE)
+<!--
+Not updated correctly any more!
 [![arduino-library-badge](https://www.ardu-badge.com/badge/ATC_MiThermometer.svg?)](https://www.ardu-badge.com/ATC_MiThermometer)
+-->
 
 Arduino BLE Client Library based on [NimBLE-Arduino](https://github.com/h2zero/NimBLE-Arduino) for receiving ATC_MiThermometer Data (as Advertising Data) - both the "custom" format and the original "atc1441" format are supported.
 
