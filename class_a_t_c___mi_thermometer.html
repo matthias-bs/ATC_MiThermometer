@@ -101,10 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af8bb1ea6e709d0032821a0792c05b0c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_t_c___mi_thermometer.html#af8bb1ea6e709d0032821a0792c05b0c1">ATC_MiThermometer</a> (std::vector&lt; std::string &gt; known_sensors)</td></tr>
 <tr class="memdesc:af8bb1ea6e709d0032821a0792c05b0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_a_t_c___mi_thermometer.html#af8bb1ea6e709d0032821a0792c05b0c1">More...</a><br /></td></tr>
 <tr class="separator:af8bb1ea6e709d0032821a0792c05b0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02374900efd29ea98378666b158e5139"><td class="memItemLeft" align="right" valign="top"><a id="a02374900efd29ea98378666b158e5139"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_t_c___mi_thermometer.html#a02374900efd29ea98378666b158e5139">begin</a> (void)</td></tr>
-<tr class="memdesc:a02374900efd29ea98378666b158e5139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization. <br /></td></tr>
-<tr class="separator:a02374900efd29ea98378666b158e5139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5670fa670d155bfce2def7b7ee07accf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_t_c___mi_thermometer.html#a5670fa670d155bfce2def7b7ee07accf">begin</a> (bool activeScan=true)</td></tr>
+<tr class="memdesc:a5670fa670d155bfce2def7b7ee07accf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization.  <a href="class_a_t_c___mi_thermometer.html#a5670fa670d155bfce2def7b7ee07accf">More...</a><br /></td></tr>
+<tr class="separator:a5670fa670d155bfce2def7b7ee07accf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff59b5d84a20307db89c2404443dd0c4"><td class="memItemLeft" align="right" valign="top"><a id="aff59b5d84a20307db89c2404443dd0c4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_t_c___mi_thermometer.html#aff59b5d84a20307db89c2404443dd0c4">clearScanResults</a> (void)</td></tr>
 <tr class="memdesc:aff59b5d84a20307db89c2404443dd0c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete results from BLEScan buffer to release memory. <br /></td></tr>
@@ -162,6 +161,32 @@ std::vector&lt; <a class="el" href="struct_mi_th_data___s.html">MiThData_t</a> &
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5670fa670d155bfce2def7b7ee07accf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5670fa670d155bfce2def7b7ee07accf">&#9670;&nbsp;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ATC_MiThermometer::begin </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>activeScan</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialization. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">activeScan</td><td>Set to true for achtive scan, which uses more power, but get results faster. As a side effect, the device name is received (most of the times). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a9ea653d4d465310eb012ad2fc4a345a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ea653d4d465310eb012ad2fc4a345a4">&#9670;&nbsp;</a></span>getData()</h2>
 
