@@ -39,6 +39,10 @@
 // History:
 //
 // 20221123 Created
+// 20240403 Added reedSwitchState, gpioTrgOutput, controlParameters,
+//          tempTriggerEvent &humiTriggerEvent
+// 20240425 Added device name
+// 20240426 Added parameter activeScan to begin()
 //
 // ToDo: 
 // -
@@ -92,9 +96,13 @@ class ATC_MiThermometer {
         };
 
         /*!
-        \brief Initialization.
-        */
-        void begin(void);
+         * \brief Initialization.
+         *
+         * \param activeScan Set to true for achtive scan, which uses more power, 
+         *                   but get results faster. As a side effect, the device name
+         *                   is received (most of the times).
+         */
+        void begin(bool activeScan = true);
         
         /*!
         \brief Delete results from BLEScan buffer to release memory.
