@@ -40,6 +40,9 @@
 //
 // 20221123 Created
 // 20221223 Added support for ATC1441 format
+// 20240403 Added reedSwitchState, gpioTrgOutput, controlParameters,
+//          tempTriggerEvent &humiTriggerEvent
+// 20240425 Added device name
 //
 // ToDo: 
 // -
@@ -73,12 +76,12 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
 
 
 // Set up BLE scanning
-void ATC_MiThermometer::begin(void)
+void ATC_MiThermometer::begin(bool activeScan)
 {
     NimBLEDevice::init("");
     _pBLEScan = BLEDevice::getScan(); //create new scan
     _pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
-    _pBLEScan->setActiveScan(false); //active scan uses more power, but get results faster
+    _pBLEScan->setActiveScan(activeScan); //active scan uses more power, but get results faster
     _pBLEScan->setInterval(100);
     _pBLEScan->setFilterPolicy(BLE_HCI_SCAN_FILT_NO_WL);
     _pBLEScan->setWindow(99);  // less or equal setInterval value
@@ -133,7 +136,7 @@ unsigned ATC_MiThermometer::getData(uint32_t duration) {
                     data[n].batt_level = foundDevices.getDevice(i).getServiceData().c_str()[12];
 
                     // Count
-		    data[n].count = foundDevices.getDevice(i).getServiceData().c_str()[13];    
+                    data[n].count = foundDevices.getDevice(i).getServiceData().c_str()[13];    
                   
                     //Flags
                     uint8_t flagsByte = foundDevices.getDevice(i).getServiceData().c_str()[14];
@@ -178,7 +181,7 @@ unsigned ATC_MiThermometer::getData(uint32_t duration) {
     return foundDevices.getCount();
 }
 
-        
+
 // Set all array members invalid
 void ATC_MiThermometer::resetData(void)
 {
