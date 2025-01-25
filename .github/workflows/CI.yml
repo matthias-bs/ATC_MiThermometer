@@ -61,8 +61,8 @@ jobs:
         run:
           |
           ps -p "$$"
-          arduino-cli lib install NimBLE-Arduino@1.4.2
-          arduino-cli lib install ATC_MiThermometer@0.4.2
+          arduino-cli lib install NimBLE-Arduino@2.2.0
+          #arduino-cli lib install ATC_MiThermometer@0.4.2
 
       - name: Install platform
         if: ${{ env.run-build == 'true' }}
