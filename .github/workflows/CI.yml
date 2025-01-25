@@ -15,6 +15,7 @@ jobs:
         board:
           - esp32:esp32:esp32:DebugLevel=none
           - esp32:esp32:esp32:DebugLevel=verbose
+          - esp32:esp32:lilygo_t3s3:Revision=Radio_LR1121
           - esp32:esp32:d1_uno32
 
     runs-on: ubuntu-latest
@@ -62,7 +63,7 @@ jobs:
           |
           ps -p "$$"
           arduino-cli lib install NimBLE-Arduino@2.2.0
-          #arduino-cli lib install ATC_MiThermometer@0.4.2
+          arduino-cli lib install ATC_MiThermometer@0.5.0
 
       - name: Install platform
         if: ${{ env.run-build == 'true' }}
